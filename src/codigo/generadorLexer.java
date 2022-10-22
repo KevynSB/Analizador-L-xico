@@ -11,7 +11,7 @@ import java.io.File;
  *
  * @author kevyn
  */
-public class Principal {
+public class generadorLexer {
     public static void main(String[] args) {
         String ruta="C:/Users/kevyn/Documents/NetBeansProjects/AnalizadorLéxico/src/codigo/Lexer.flex";
         generarLexer(ruta);

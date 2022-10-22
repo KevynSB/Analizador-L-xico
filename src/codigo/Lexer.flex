@@ -9,7 +9,7 @@ E=[!#$%&'?@]+
 A=["("")""{""}""[""]"]+
 S=["+""*""/""-"]
 P=["."","";"":""-""_"]
-C=["--""/*""*/"]+
+C=["--""\/*""*/"]+
 Strings=[\"]
 espacio=[ ,\t, \r,\n]+
 %{
@@ -26,9 +26,9 @@ delete |
 while {lexeme=yytext();return palabra_reservada;}
 {espacio}({espacio})* {lexeme=yytext(); return vacio;}
 {Strings} {lexeme=yytext(); return comillas;}
-{C} {lexeme=yytext(); return comentario;}
-{P} {lexeme=yytext(); return signo_de_puntuacion;}
 {S} {lexeme=yytext(); return operador_matematico;}
+{C}+ {lexeme=yytext(); return comentario;}
+{P} {lexeme=yytext(); return signo_de_puntuacion;}
 {L}({L}|{D})* {lexeme=yytext(); return variable;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return numero;}
 {E}({E}|{L})* {lexeme=yytext(); return ERRORES;}
