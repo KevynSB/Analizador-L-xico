@@ -15,7 +15,7 @@ public enum Tokens {
     operador_matematico,
     variable,
     numero,
-    ERRORES,
+    error,
     vacio,
     signo_de_agrupacion,
     signo_de_puntuacion,

@@ -1,1 +1,1 @@
-í
+create table variable1

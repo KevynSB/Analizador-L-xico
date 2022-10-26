@@ -27,6 +27,7 @@ import javax.swing.text.StyleContext;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,6 +64,7 @@ int xMouse,yMouse;
         btnLimpiar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnHome = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -127,6 +129,24 @@ int xMouse,yMouse;
         jLabel1.setText("Copyright @Kevyn_SB");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, -1));
 
+        btnHome.setBackground(new java.awt.Color(0, 0, 0));
+        btnHome.setFont(new java.awt.Font("Cascadia Mono", 1, 12)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(204, 0, 0));
+        btnHome.setText("HOME");
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHome.setOpaque(false);
+        btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHomeMouseClicked(evt);
+            }
+        });
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 90, 40));
+
         lblFondo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 lblFondoMouseDragged(evt);
@@ -159,39 +179,40 @@ int xMouse,yMouse;
                 }
                 switch (tokens) {
                     case palabra_reservada:
-                        appendToPane(tPane, lexer.lexeme + "\tEs una " + tokens + "\n", Color.RED);
+                        appendToPane(tPane, lexer.lexeme + "\tEs una " + tokens + "\n", Color.BLUE);
                         break;
                     case operador_matematico:
-                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.BLUE);
+                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.BLACK);
                         break;
                     case comentario:
-                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.yellow);
+                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.BLUE);
                         break;
 
                     case variable:
-                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.CYAN);
+                        appendToPane(tPane, lexer.lexeme + "\tEs una " + tokens + "\n", Color.red);
                         break;
                     case numero:
-                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.DARK_GRAY);
+                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.orange);
                         break;
                     case vacio:
                         break;
                     case signo_de_agrupacion:
-                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.GREEN);
+                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.black);
                         break;
                     case signo_de_puntuacion:
-                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.MAGENTA);
+                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.black);
                         break;
                     case comillas:
-                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.ORANGE);
+                        appendToPane(tPane, lexer.lexeme + "\tSon Comillas " + tokens + "\n", Color.black);
                         break;
                     default:
-                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.PINK);
+                        appendToPane(tPane, lexer.lexeme + "\tEs un " + tokens + "\n", Color.MAGENTA);
                         break;
                 }
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(analiadorDeEscritura.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"EL ARCHIVO CONTIENE TILDES");
         } catch (IOException ex) {
             Logger.getLogger(analiadorDeEscritura.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -224,6 +245,16 @@ int xMouse,yMouse;
         this.setLocation(xMouse,yMouse);
         this.setLocation(x-xMouse,y-yMouse);
     }//GEN-LAST:event_lblFondoMouseDragged
+
+    private void btnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeMouseClicked
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+       menu obj1=new menu();
+       obj1.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_btnHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,6 +296,7 @@ int xMouse,yMouse;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalizar;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
